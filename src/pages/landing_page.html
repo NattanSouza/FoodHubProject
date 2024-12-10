@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodHub</title>
+    <link href="../styles/landing_page.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header -->
+<header class="menuHeader bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md fixed top-0 left-0 w-full z-50">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="./landing_page.html" class="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+                <!-- Logo escrita para desktop -->
+                <span class="hidden md:block">FoodHub</span>
+                <!-- Logo para mobile -->
+                <img src="../images/logo.png" alt="Logo FoodHub" class="block md:hidden h-8">
+            </a>
+        </div>
+
+        <!-- Links de Navegação (Desktop) -->
+        <ul class="hidden md:flex space-x-8">
+            <li><a href="./logged_page.html" class="text-gray-700 font-medium hover:text-blue-500">Menu</a></li>
+            <li><a href="./feedbacks.html" class="text-gray-700 font-medium hover:text-blue-500">Feedbacks</a></li>
+            <li><a href="./about_us.html" class="text-gray-700 font-medium hover:text-blue-500">Sobre</a></li>
+        </ul>
+
+        <!-- Ícone de perfil ou Login (Desktop) -->
+        <div class="hidden md:flex items-center">
+            <a id="profileLink" href="login.html" class="text-gray-700 hover:text-blue-500 transition"></a>
+        </div>
+
+        <!-- Botão Hamburger (Mobile) -->
+        <div id="burger" class="flex flex-col items-center space-y-1 w-8 h-8 justify-center cursor-pointer md:hidden z-[105]">
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- Navegação Mobile (inicialmente escondida) -->
+<ul id="mobileNav" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-xl z-[104]">
+    <li><a href="./logged_page.html" class="hover:text-blue-400 transition">Inicio</a></li>
+    <li><a href="./feedbacks.html" class="hover:text-blue-400 transition">Feedbacks</a></li>
+    <li><a href="./about_us.html" class="hover:text-blue-400 transition">Sobre</a></li>
+    <li><a id="mobileProfileLink" href="user_profile.html" class="hover:text-blue-400 transition">Editar Perfil</a></li>
+    <li><a id="mobileLoginLink" href="register_page.html" class="hover:text-blue-400 transition">Login</a></li>
+</ul>
+
+     <!-- Hero Section -->
+<section class="heroSection relative bg-cover bg-center h-screen pt-24" style="background-image: url('../images/FoodHub_background.jpg');">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="container mx-auto flex items-center justify-center h-full relative z-10">
+        <div class="text-center text-white">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Bem vindo ao FoodHub</h1>
+            <p class="text-lg md:text-xl mb-8">A sua solução para o restaurante perfeito.</p>
+            <a href="../pages/register_page.html" class="btnHero bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">Venha conferir nossos pratos!</a>
+        </div>
+    </div>
+</section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-100">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-8">Sobre nós</h2>
+                <p class="text-lg text-gray-700 mb-4 text-justify">A FoodHub é mais do que uma simples loja virtual de um restaurante – somos uma plataforma dedicada a levar até você a melhor experiência gastronômica, com praticidade e qualidade. Nosso compromisso é oferecer pratos deliciosos, feitos com ingredientes frescos e preparados com todo o carinho, para que você possa desfrutar de uma refeição incrível no conforto da sua casa ou onde quer que esteja.
+                    Acreditamos que a comida tem o poder de conectar pessoas e transformar momentos, por isso, trabalhamos incansavelmente para garantir que cada pedido seja uma experiência única. Com um cardápio diversificado, opções para todos os gostos e um sistema de pedidos simples e eficiente, queremos tornar a sua refeição mais fácil, rápida e saborosa. Seja para um almoço rápido ou para uma refeição especial, a FoodHub está aqui para servir você com excelência e dedicação, sempre buscando a perfeição em cada prato entregue.</p>
+            </div>
+        </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">Nossos Serviços</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Pedidos Online</h3>
+                    <p class="text-gray-700 text-justify">Delivery é a forma mais prática de receber suas refeições favoritas no conforto da sua casa! Com o FoodHub, fazer seu pedido é simples, rápido e seguro. Basta acessar o aplicativo ou site, escolher seu restaurante preferido, montar seu pedido e pronto!
+                        Nosso entregador busca o seu pedido no restaurante e traz até você, sem que você precise sair do sofá.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Cardápio Online</h3>
+                    <p class=" text-gray-700 text-justify">O cardápio online é uma forma prática e moderna de explorar todas as opções oferecidas pelo restaurante sem sair de casa. Ele apresenta os pratos de maneira organizada, com fotos de alta qualidade, descrições detalhadas e informações importantes como preços, ingredientes e opções de personalização.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Feedbacks</h3>
+                    <p class="text-gray-700 text-justify">Os feedbacks são fundamentais para melhorar constantemente os serviços e produtos oferecidos pela FoodHub. Ao permitir que os clientes deixem suas opiniões sobre a experiência de pedido, entrega e qualidade das refeições, a FoodHub pode entender melhor as necessidades e expectativas do seu público.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 FoodHub. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script src="../scripts/landing_page.js" type="module"></script>
+</body>
+</html>

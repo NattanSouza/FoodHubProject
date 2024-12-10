@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="../styles/user_profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    
+        <!-- Header -->
+<header class="menuHeader bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md fixed top-0 left-0 w-full z-50">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="./landing_page.html" class="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+                <!-- Logo escrita para desktop -->
+                <span class="hidden md:block">FoodHub</span>
+                <!-- Logo para mobile -->
+                <img src="../images/logo.png" alt="Logo FoodHub" class="block md:hidden h-8">
+            </a>
+        </div>
+
+        <!-- Links de Navegação (Desktop) -->
+        <ul class="hidden md:flex space-x-8">
+            <li><a href="./logged_page.html" class="text-gray-700 font-medium hover:text-blue-500">Menu</a></li>
+            <li><a href="./feedbacks.html" class="text-gray-700 font-medium hover:text-blue-500">Feedbacks</a></li>
+            <li><a href="./about_us.html" class="text-gray-700 font-medium hover:text-blue-500">Sobre</a></li>
+        </ul>
+
+        <!-- Ícone de perfil ou Login (Desktop) -->
+        <div class="hidden md:flex items-center">
+            <a id="profileLink" href="login.html" class="text-gray-700 hover:text-blue-500 transition"></a>
+        </div>
+
+        <!-- Botão Hamburger (Mobile) -->
+        <div id="burger" class="flex flex-col items-center space-y-1 w-8 h-8 justify-center cursor-pointer md:hidden z-[105]">
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- Navegação Mobile (inicialmente escondida) -->
+<ul id="mobileNav" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-xl z-[104]">
+    <li><a href="./logged_page.html" class="hover:text-blue-400 transition">Inicio</a></li>
+    <li><a href="./feedbacks.html" class="hover:text-blue-400 transition">Feedbacks</a></li>
+    <li><a href="./about_us.html" class="hover:text-blue-400 transition">Sobre</a></li>
+    <li><a id="mobileProfileLink" href="user_profile.html" class="hover:text-blue-400 transition">Editar Perfil</a></li>
+    <li><a id="mobileLoginLink" href="register_page.html" class="hover:text-blue-400 transition">Login</a></li>
+</ul>
+
+    <!-- Main Content -->
+    <main class="mainContent max-w-4xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold mb-6 text-indigo-600">Editar Perfil</h1>
+        <form id="perfilForm" class="space-y-6">
+            <!-- Informações do usuário -->
+            <div>
+                <label for="nome" class="inpChange block font-semibold text-gray-700">Nome</label>
+                <div class="relative">
+                    <i class="bx bx-user absolute left-3 top-2.5 text-gray-400"></i>
+                    <input 
+                        type="text" 
+                        id="nome" 
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300" 
+                        placeholder="Digite seu nome">
+                </div>
+            </div>
+            <div>
+                <label for="email" class="inpChange block font-semibold text-gray-700">E-mail</label>
+                <div class="relative">
+                    <i class="bx bx-envelope absolute left-3 top-2.5 text-gray-400"></i>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-gray-100 cursor-not-allowed focus:outline-none focus:ring-0" 
+                        placeholder="Digite seu e-mail" 
+                        disabled>
+                </div>
+            </div>
+            <div>
+                <label for="senha" class="inpChange block font-semibold text-gray-700">Senha</label>
+                <div class="relative">
+                    <i class="bx bx-lock-alt absolute left-3 top-2.5 text-gray-400"></i>
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300" 
+                        placeholder="Digite sua senha">
+                </div>
+            </div>
+
+            <!-- Endereço Padrão -->
+            <h2 class="text-xl font-semibold mt-8 text-indigo-600">Endereço Padrão</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="cidade" class="inpChange block font-semibold text-gray-700">Cidade</label>
+                    <div class="relative">
+                        <i class="bx bx-building-house absolute left-3 top-2.5 text-gray-400"></i>
+                        <input 
+                            type="text" 
+                            id="cidade" 
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300" 
+                            placeholder="Digite a cidade">
+                    </div>
+                </div>
+                <div>
+                    <label for="rua" class="inpChange block font-semibold text-gray-700">Rua</label>
+                    <div class="relative">
+                        <i class="bx bx-street-view absolute left-3 top-2.5 text-gray-400"></i>
+                        <input 
+                            type="text" 
+                            id="rua" 
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300" 
+                            placeholder="Digite a rua">
+                    </div>
+                </div>
+                <div>
+                    <label for="bairro" class="inpChange block font-semibold text-gray-700">Bairro</label>
+                    <div class="relative">
+                        <i class="bx bx-map-pin absolute left-3 top-2.5 text-gray-400"></i>
+                        <input 
+                            type="text" 
+                            id="bairro" 
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300" 
+                            placeholder="Digite o bairro">
+                    </div>
+                </div>
+                <div>
+                    <label for="numero" class="inpChange block font-semibold text-gray-700">Número</label>
+                    <div class="relative">
+                        <i class="bx bx-home-alt absolute left-3 top-2.5 text-gray-400"></i>
+                        <input 
+                            type="text" 
+                            id="numero" 
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300" 
+                            placeholder="Digite o número">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão para salvar -->
+            <button 
+                type="button" 
+                id="salvarPerfil" 
+                class="btnChanges w-full bg-indigo-500 text-white py-3 px-4 rounded-lg shadow hover:bg-indigo-600 transition transform hover:-translate-y-1">
+                Salvar Alterações
+            </button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-10 bg-gray-100 py-4">
+        <div class="max-w-4xl mx-auto text-center text-gray-600">
+            &copy; 2024 FoodHub. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="../scripts/user_profile.js"></script>
+</body>
+</html>

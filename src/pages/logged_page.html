@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../styles/logged_page.css">
+    <title>FoodHub Logado</title>
+</head>
+<body>
+
+    <div id="login-toast" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <i class='bx bx-error-circle text-red-500 text-4xl mb-2'></i>
+            <p class="text-lg font-semibold text-gray-800">Você precisa estar logado para acessar esta página.</p>
+            <p class="text-sm text-gray-600 mb-4">Redirecionando para a página de login...</p>
+            <button id="close-toast" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+<header class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md fixed top-0 left-0 w-full z-50">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="./logged_page.html" class="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+                <!-- Logo escrita para desktop -->
+                <span class="hidden md:block">FoodHub</span>
+                <!-- Logo para mobile -->
+                <img src="../images/logo.png" alt="Logo FoodHub" class="block md:hidden h-8">
+            </a>
+        </div>
+
+        <!-- Links de Navegação (Desktop) -->
+        <ul class="hidden md:flex space-x-8">
+            <li><a href="./logged_page.html" class="text-gray-700 font-medium hover:text-blue-500">Menu</a></li>
+            <li><a href="./feedbacks.html" class="text-gray-700 font-medium hover:text-blue-500">Feedbacks</a></li>
+            <li><a href="./about_us.html" class="text-gray-700 font-medium hover:text-blue-500">Sobre</a></li>
+        </ul>
+
+        <!-- Ícone de perfil (Desktop) -->
+        <div class="hidden md:flex items-center">
+            <a href="user_profile.html" class="text-gray-700 hover:text-blue-500 transition">
+                <i class='bx bx-user-circle text-4xl'></i>
+            </a>
+        </div>
+
+        <!-- Botão Hamburger (Mobile) -->
+        <div id="burger" class="flex flex-col items-center space-y-1 w-8 h-8 justify-center cursor-pointer md:hidden">
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- Navegação Mobile (inicialmente escondida) -->
+<ul id="mobileNav" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-xl">
+    <li><a href="./logged_page.html" class="hover:text-blue-400 transition">Menu</a></li>
+    <li><a href="./feedbacks.html" class="hover:text-blue-400 transition">Feedbacks</a></li>
+    <li><a href="./about_us.html" class="hover:text-blue-400 transition">Sobre</a></li>
+    <li><a href="user_profile.html" class="hover:text-blue-400 transition">Editar Perfil</a></li>
+</ul>
+
+    <main>
+        <div class="catHeader text-center py-10">
+            <h1 class="text-4xl font-bold">Catálogo de Comidas</h1>
+        </div>
+    
+        <section id="catalogo" class="px-4 py-10">
+    
+            <!-- Entradas -->
+            <div class="categoria mb-10" id="entradas">
+                <h2 class="text-3xl font-semibold mb-4 border-b-2 border-gray-300 pb-2">Entradas</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Bruschetta de tomate.jpg" alt="Bruschetta de Tomate e Manjericão">
+                        <h3 class="text-xl font-semibold mb-2">Bruschetta de Tomate</h3>
+                        <p class="text-lg mb-4">Preço: R$ 14,99</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Bruschetta de Tomate', 14.99)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Caldinho de feijão.jpeg" alt="Caldinho de Feijão">
+                        <h3 class="text-xl font-semibold mb-2">Caldinho de Feijão</h3>
+                        <p class="text-lg mb-4">Preço: R$ 19,99</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Caldinho de Feijão', 19.99)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Camarões empanados com molho.jpg" alt="Camarões Empanados com Molho">
+                        <h3 class="text-xl font-semibold mb-2">Camarões Empanados com Molho </h3>
+                        <p class="text-lg mb-4">Preço: R$ 30,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Camarões Empanados com Molho', 30.90)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Carpaccio de Carne com Alcaparras.jpg" alt="Carpaccio de Carne com Alcaparras">
+                        <h3 class="text-xl font-semibold mb-2">Carpaccio de Carne com Alcaparras</h3>
+                        <p class="text-lg mb-4">Preço: R$ 52,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Carpaccio de Carne com Alcaparras', 52.90)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Guacamole com Tortilhas.jpg" alt="Guacamole com Tortilhas">
+                        <h3 class="text-xl font-semibold mb-2">Guacamole com Tortilhas</h3>
+                        <p class="text-lg mb-4">Preço: R$ 17,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Guacamole com Tortilhas', 17.90)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Anéis de Cebola Empanados.jpg" alt="Anéis de Cebola Empanados">
+                        <h3 class="text-xl font-semibold mb-2">Anéis de Cebola Empanados</h3>
+                        <p class="text-lg mb-4">Preço: R$ 24,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Anéis de Cebola Empanados', 24.90)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Tartar de Salmão.jpg" alt="Tartar de Salmão">
+                        <h3 class="text-xl font-semibold mb-2">Tartar de Salmão</h3>
+                        <p class="text-lg mb-4">Preço: R$ 53,80</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Tartar de Salmão', 53.80)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Mini Pastéis de Carne e Queijo.jpg" alt="Mini Pastéis de Carne e Queijo">
+                        <h3 class="text-xl font-semibold mb-2">Mini Pastéis de Carne e Queijo</h3>
+                        <p class="text-lg mb-4">Preço: R$ 24,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Mini Pastéis de Carne e Queijo', 24.90)">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Pratos Principais -->
+            <div class="categoria mb-10" id="pratos-principais">
+                <h2 class="text-3xl font-semibold mb-4 border-b-2 border-gray-300 pb-2">Pratos Principais</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Pasta ao Pesto.jpg" alt="Pasta ao Pesto">
+                        <h3 class="text-xl font-semibold mb-2">Pasta ao Pesto</h3>
+                        <p class="text-lg mb-4">Preço: R$ 17,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Pasta ao Pesto', 17.90)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Filé Mignon Grelhado.jpg" alt="Filé Mignon Grelhado">
+                        <h3 class="text-xl font-semibold mb-2">Filé Mignon Grelhado</h3>
+                        <p class="text-lg mb-4">Preço: R$ 74,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Filé Mignon Grelhado', 74.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Lasanha de Carne com Queijo.jpeg" alt="Lasanha de Carne com Queijo">
+                        <h3 class="text-xl font-semibold mb-2">Lasanha de Carne com Queijo</h3>
+                        <p class="text-lg mb-4">Preço: R$ 36,80</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Lasanha de Carne com Queijo', 36.80)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Bacalhau à Brás.jpg" alt="Bacalhau à Brás">
+                        <h3 class="text-xl font-semibold mb-2">Bacalhau à Brás</h3>
+                        <p class="text-lg mb-4">Preço: R$ 69,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Bacalhau à Brás', 69.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Risoto de Frutos do Mar.jpg" alt="Risoto de Frutos do Mar">
+                        <h3 class="text-xl font-semibold mb-2">Risoto de Frutos do Mar</h3>
+                        <p class="text-lg mb-4">Preço: R$ 29,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Risoto de Frutos do Mar', 29.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Filé de Frango com Molho de Laranja.jpg" alt="Filé de Frango com Molho de Laranja">
+                        <h3 class="text-xl font-semibold mb-2">Filé de Frango com Molho de Laranja</h3>
+                        <p class="text-lg mb-4">Preço: R$ 36,50</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Filé de Frango com Molho de Laranja', 36.50)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Peito de Frango Grelhado com Purê.jpg" alt="Peito de Frango Grelhado com Purê">
+                        <h3 class="text-xl font-semibold mb-2">Peito de Frango Grelhado com Purê</h3>
+                        <p class="text-lg mb-4">Preço: R$ 24,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Peito de Frango Grelhado com Purê', 24.90)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Costela de Porco Assada.jpg" alt="Costela de Porco Assada">
+                        <h3 class="text-xl font-semibold mb-2">Costela de Porco Assada</h3>
+                        <p class="text-lg mb-4">Preço: R$ 34,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Costela de Porco Assada', 34.90)">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sobremesas -->
+            <div class="categoria mb-10" id="sobremesas">
+                <h2 class="text-3xl font-semibold mb-4 border-b-2 border-gray-300 pb-2">Sobremesas</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Tiramisu.jpg" alt="Tiramisu">
+                        <h3 class="text-xl font-semibold mb-2">Tiramisu</h3>
+                        <p class="text-lg mb-4">Preço: R$ 27,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Tiramisu', 27.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Pavê de Chocolate e Amendoim.jpg" alt="Pavê de Chocolate e Amendoim">
+                        <h3 class="text-xl font-semibold mb-2">Pavê de Chocolate e Amendoim</h3>
+                        <p class="text-lg mb-4">Preço: R$ 21,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Pavê de Chocolate e Amendoim', 21.90)">Adicionar ao Carrinho</button>
+                    </div>
+                    
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Mousse de Maracujá.jpg" alt="Mousse de Maracujá">
+                        <h3 class="text-xl font-semibold mb-2">Mousse de Maracujá</h3>
+                        <p class="text-lg mb-4">Preço: R$ 37,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Mousse de Maracujá', 37.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Brownie com Sorvete de Creme.jpg" alt="Brownie com Sorvete de Creme">
+                        <h3 class="text-xl font-semibold mb-2">Brownie com Sorvete de Creme</h3>
+                        <p class="text-lg mb-4">Preço: R$ 23,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Brownie com Sorvete de Creme', 23.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Mini Churros Recheados.jpg" alt="Mini Churros Recheados">
+                        <h3 class="text-xl font-semibold mb-2">Mini Churros Recheados</h3>
+                        <p class="text-lg mb-4">Preço: R$ 16,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Mini Churros Recheados', 16.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Pudim de Leite Condensado.jpeg" alt="Pudim de Leite Condensado">
+                        <h3 class="text-xl font-semibold mb-2">Pudim de Leite Condensado</h3>
+                        <p class="text-lg mb-4">Preço: R$ 48,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Pudim de Leite Condensado', 48.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Torta de Limão Siciliano.jpg" alt="Torta de Limão Siciliano">
+                        <h3 class="text-xl font-semibold mb-2">Torta de Limão Siciliano</h3>
+                        <p class="text-lg mb-4">Preço: R$ 44,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Torta de Limão Siciliano', 44.90)">Adicionar ao Carrinho</button>
+                    </div>
+
+                    <div class="card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="../images/Mil-Folhas de Frutas Vermelhas.jpg" alt="Mil-Folhas de Frutas Vermelhas">
+                        <h3 class="text-xl font-semibold mb-2">Mil-Folhas de Frutas Vermelhas</h3>
+                        <p class="text-lg mb-4">Preço: R$ 27,90</p>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition" onclick="adicionarAoCarrinho('Mil-Folhas de Frutas Vermelhas', 27.90)">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <div class="fixed-cart">
+            <a href="cart.html">
+                <i class='bx bx-cart' style="font-size: 30px;"></i>
+                <span id="cart-count" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-2 py-1">0</span>
+            </a>
+        </div>
+    </main>    
+    
+    <script src="../scripts/logged_page.js"></script>
+</body>
+</html>

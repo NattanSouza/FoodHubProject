@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/cart.css">
+</head>
+<body class="bg-gray-50">
+
+        <!-- Header -->
+<header class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md fixed top-0 left-0 w-full z-50">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="./landing_page.html" class="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+                <!-- Logo escrita para desktop -->
+                <span class="hidden md:block">FoodHub</span>
+                <!-- Logo para mobile -->
+                <img src="../images/logo.png" alt="Logo FoodHub" class="block md:hidden h-8">
+            </a>
+        </div>
+
+        <!-- Links de Navegação (Desktop) -->
+        <ul class="hidden md:flex space-x-8">
+            <li><a href="./logged_page.html" class="text-gray-700 font-medium hover:text-blue-500">Menu</a></li>
+            <li><a href="./feedbacks.html" class="text-gray-700 font-medium hover:text-blue-500">Feedbacks</a></li>
+            <li><a href="./about_us.html" class="text-gray-700 font-medium hover:text-blue-500">Sobre</a></li>
+        </ul>
+
+        <!-- Ícone de perfil (Desktop) -->
+        <div class="hidden md:flex items-center">
+            <a href="user_profile.html" class="text-gray-700 hover:text-blue-500 transition">
+                <i class='bx bx-user-circle text-4xl'></i>
+            </a>
+        </div>
+
+        <!-- Botão Hamburger (Mobile) -->
+        <div id="burger" class="flex flex-col items-center space-y-1 w-8 h-8 justify-center cursor-pointer md:hidden">
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- Navegação Mobile (inicialmente escondida) -->
+<ul id="mobileNav" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-xl">
+    <li><a href="./logged_page.html" class="hover:text-blue-400 transition">Menu</a></li>
+    <li><a href="./feedbacks.html" class="hover:text-blue-400 transition">Feedbacks</a></li>
+    <li><a href="./about_us.html" class="hover:text-blue-400 transition">Sobre</a></li>
+    <li><a href="user_profile.html" class="hover:text-blue-400 transition">Editar Perfil</a></li>
+</ul>
+
+    <!-- Layout do Checkout -->
+    <div class="main max-w-6xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Lado esquerdo - Endereço de Entrega -->
+        <div class="space-y-6">
+            <h1 class="text-2xl font-semibold mb-4">Endereço de Entrega</h1>
+
+            <div class="space-y-4">
+                <div>
+                    <label for="rua" class="block text-sm font-semibold">Rua</label>
+                    <input type="text" id="rua" class="w-full p-2 border rounded-md" placeholder="Rua Exemplo">
+                </div>
+                <div class="flex space-x-4">
+                    <div>
+                        <label for="bairro" class="block text-sm font-semibold">Bairro</label>
+                        <input type="text" id="bairro" class="w-full p-2 border rounded-md" placeholder="Bairro Exemplo">
+                    </div>
+                    <div>
+                        <label for="cidade" class="block text-sm font-semibold">Cidade</label>
+                        <input type="text" id="cidade" class="w-full p-2 border rounded-md" placeholder="Cidade Exemplo">
+                    </div>
+                </div>
+                <div class="flex space-x-4">
+                    <div>
+                        <label for="cep" class="block text-sm font-semibold">CEP</label>
+                        <input type="text" id="cep" class="w-full p-2 border rounded-md" placeholder="00000-000">
+                    </div>
+                    <div>
+                        <label for="numero" class="block text-sm font-semibold">Número</label>
+                        <input type="text" id="numero" class="w-full p-2 border rounded-md" placeholder="Número da casa">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lado direito - Itens do Carrinho e Forma de Pagamento -->
+        <div>
+            <!-- Forma de Pagamento -->
+            <h1 class="text-2xl font-semibold mb-4">Forma de Pagamento</h1>
+
+            <div class="space-y-4">
+                <!-- Botão de Cartão de Crédito -->
+                <button id="cartaoBtn" class="w-full flex items-center justify-start py-3 px-4 bg-gray-100 border rounded-md hover:bg-gray-200">
+                    <i class="bx bxs-credit-card text-xl mr-3"></i> Cartão de Crédito
+                </button>
+
+                <!-- Botão de Pix -->
+                <button id="pixBtn" class="w-full flex items-center justify-start py-3 px-4 bg-gray-100 border rounded-md hover:bg-gray-200">
+                    <i class="bx bx-qr-scan text-xl mr-3"></i> Pagamento via Pix
+                </button>
+            </div>
+
+            <!-- Campos do Cartão (somente se Cartão for selecionado) -->
+            <div id="cartaoCampos" class="hidden mt-6 space-y-4 transition-all duration-300">
+                <div>
+                    <label for="numeroCartao" class="block text-sm font-semibold">Número do Cartão</label>
+                    <input type="text" id="numeroCartao" class="w-full p-2 border rounded-md" placeholder="0000 0000 0000 0000">
+                </div>
+                <div class="flex space-x-4">
+                    <div>
+                        <label for="dataValidade" class="block text-sm font-semibold">Data de Validade</label>
+                        <input type="text" id="dataValidade" class="w-full p-2 border rounded-md" placeholder="MM/AA">
+                    </div>
+                    <div>
+                        <label for="cvv" class="block text-sm font-semibold">CVV</label>
+                        <input type="text" id="cvv" class="w-full p-2 border rounded-md" placeholder="123">
+                    </div>
+                </div>
+                <!-- Dono do Cartão -->
+                <div>
+                    <label for="nomeCartao" class="block text-sm font-semibold">Nome no Cartão</label>
+                    <input type="text" id="nomeCartao" class="w-full p-2 border rounded-md" placeholder="Nome do titular">
+                </div>
+            </div>
+
+            <!-- Campos do Pix (somente se Pix for selecionado) -->
+            <div id="pixCampos" class="hidden mt-6 transition-all duration-300">
+                <p class="text-sm">Escaneie o código QR abaixo para finalizar o pagamento via Pix:</p>
+                <img src="https://via.placeholder.com/150" alt="QR Code do Pix" class="mx-auto mt-4">
+            </div>
+
+            <!-- Itens no Carrinho -->
+            <h1 class="text-2xl font-semibold mt-10 mb-4">Itens do Carrinho</h1>
+            <ul id="itensCarrinho" class="space-y-4">
+                <!-- Itens do carrinho serão adicionados aqui -->
+            </ul>
+
+            <!-- Total -->
+            <div class="flex justify-between items-center mt-6 border-t pt-4">
+                <p class="text-lg font-semibold">Total:</p>
+                <p id="total" class="text-lg">R$ 0,00</p>
+            </div>
+
+            <!-- Botão Finalizar Compra -->
+            <div class="mt-6 text-center">
+                <button class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/cart.js"></script>
+</body>
+</html>

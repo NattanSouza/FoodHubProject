@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../styles/register_page.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="menuHeader bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md fixed top-0 left-0 w-full z-50">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="./landing_page.html" class="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+                <span class="hidden md:block">FoodHub</span>
+                <img src="../images/logo.png" alt="Logo FoodHub" class="block md:hidden h-8">
+            </a>
+        </div>
+
+        <!-- Links de Navegação (Desktop) -->
+        <ul class="hidden md:flex space-x-8">
+            <li><a href="./logged_page.html" class="text-gray-700 font-medium hover:text-blue-500">Menu</a></li>
+            <li><a href="./feedbacks.html" class="text-gray-700 font-medium hover:text-blue-500">Feedbacks</a></li>
+            <li><a href="./about_us.html" class="text-gray-700 font-medium hover:text-blue-500">Sobre</a></li>
+        </ul>
+
+        <!-- Ícone de perfil ou Login (Desktop) -->
+        <div class="hidden md:flex items-center">
+            <a id="profileLink" href="login.html" class="text-gray-700 hover:text-blue-500 transition"></a>
+        </div>
+
+        <!-- Botão Hamburger (Mobile) -->
+        <div id="burger" class="flex flex-col items-center space-y-1 w-8 h-8 justify-center cursor-pointer md:hidden z-[105]">
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+            <div class="w-6 h-0.5 bg-gray-800"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- Navegação Mobile (inicialmente escondida) -->
+<ul id="mobileNav" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-xl z-[104]">
+    <li><a href="./logged_page.html" class="hover:text-blue-400 transition">Inicio</a></li>
+    <li><a href="./feedbacks.html" class="hover:text-blue-400 transition">Feedbacks</a></li>
+    <li><a href="./about_us.html" class="hover:text-blue-400 transition">Sobre</a></li>
+    <li><a id="mobileProfileLink" href="user_profile.html" class="hover:text-blue-400 transition">Editar Perfil</a></li>
+    <li><a id="mobileLoginLink" href="register_page.html" class="hover:text-blue-400 transition">Login</a></li>
+</ul>
+
+<!-- Formulário de Login e Cadastro -->
+<div class="container">
+    <div class="form-box login">
+        <!-- Mensagem de erro ou sucesso -->
+        <div id="message" class="error-message"></div>
+        <div id="loginMessage" class="error-message"></div>
+        <form action="" class="primero">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input id="emailLogin" type="email" class="email" placeholder="Email" required>
+                <i class="bx bxs-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input id="senhaLogin" type="password" class="senha" placeholder="Senha" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <div class="forgot-link">
+                <a href="#">Esqueceu sua senha?</a>
+            </div>
+            <button type="submit" class="btn">Logar</button>
+            <p>Ou se preferir, use suas redes sociais: </p>
+            <div class="social-icons">
+                <a href=""><i class="bx bxl-google"></i></a>
+                <a href=""><i class="bx bxl-facebook"></i></a>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-box register">
+        <!-- Mensagem de erro ou sucesso -->
+        <div id="message" class="error-message"></div>
+        <div id="registerMessage" class="error-message"></div>
+        <form action="" class="primero">
+            <h1>Cadastre-se</h1>
+            <div class="input-box">
+                <input id="nome" type="text" class="nome" placeholder="Usuário" required>
+            </div>
+            <div class="input-box">
+                <input id="email" type="email" class="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <input id="senha" type="password" class="senha" placeholder="Senha" required>
+            </div>
+            <div class="input-box">
+                <input id="confirmarSenha" type="password" class="confirmarSenha" placeholder="Confirme sua senha" required>
+            </div>
+            <button type="submit" class="btn">Cadastrar</button>
+            <p>Ou se preferir, use suas redes sociais: </p>
+            <div class="social-icons">
+                <a href=""><i class="bx bxl-google"></i></a>
+                <a href=""><i class="bx bxl-facebook"></i></a>
+            </div>
+        </form>
+    </div>
+
+    <div class="toogle-box">
+        <div class="toogle-panel toogle-left">
+            <h1>Olá, Bem vindo!</h1>
+            <p>Não possui uma conta?</p>
+            <button id="registerBtn" class="btn register-btn">Cadastre-se</button>
+        </div>
+        <div class="toogle-panel toogle-right">
+            <h1>Bem vindo!</h1>
+            <p>Já possui uma conta?</p>
+            <button id="loginBtn" class="btn login-btn">Entrar <box-icon name='right-arrow-alt'></box-icon></button>
+        </div>
+    </div>
+</div>
+
+<script src="../scripts/register_page.js" type="module"></script>
+</body>
+</html>

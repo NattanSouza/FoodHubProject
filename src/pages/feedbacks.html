@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedbacks</title>
+    <link rel="stylesheet" href="../styles/feedbacks.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <div id="login-toast" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <i class='bx bx-error-circle text-red-500 text-4xl mb-2'></i>
+            <p class="text-lg font-semibold text-gray-800">Você precisa estar logado para interagir com o formulário.</p>
+            <button id="close-toast" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md fixed top-0 left-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="./logged_page.html" class="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+                    <!-- Logo escrita para desktop -->
+                    <span class="hidden md:block">FoodHub</span>
+                    <!-- Logo para mobile -->
+                    <img src="../images/logo.png" alt="Logo FoodHub" class="block md:hidden h-8">
+                </a>
+            </div>
+
+            <!-- Links de Navegação (Desktop) -->
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="./logged_page.html" class="text-gray-700 font-medium hover:text-blue-500">Menu</a></li>
+                <li><a href="./feedbacks.html" class="text-gray-700 font-medium hover:text-blue-500">Feedbacks</a></li>
+                <li><a href="./about_us.html" class="text-gray-700 font-medium hover:text-blue-500">Sobre</a></li>
+            </ul>
+
+            <!-- Ícone de perfil ou Login (Desktop) -->
+            <div class="hidden md:flex items-center">
+                <a id="profileLink" href="user_profile.html" class="text-gray-700 hover:text-blue-500 transition"></a>
+            </div>
+
+            <!-- Botão Hamburger (Mobile) -->
+            <div id="burger" class="flex flex-col items-center space-y-1 w-8 h-8 justify-center cursor-pointer md:hidden">
+                <div class="w-6 h-0.5 bg-gray-800"></div>
+                <div class="w-6 h-0.5 bg-gray-800"></div>
+                <div class="w-6 h-0.5 bg-gray-800"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Navegação Mobile (inicialmente escondida) -->
+    <ul id="mobileNav" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-xl">
+        <li><a href="./logged_page.html" class="hover:text-blue-400 transition">Inicio</a></li>
+        <li><a href="./feedbacks.html" class="hover:text-blue-400 transition">Feedbacks</a></li>
+        <li><a href="./about_us.html" class="hover:text-blue-400 transition">Sobre</a></li>
+        <li><a id="mobileProfileLink" href="user_profile.html" class="hover:text-blue-400 transition">Editar Perfil</a></li>
+        <li><a id="mobileLoginLink" href="register_page.html" class="hover:text-blue-400 transition">Login</a></li>
+    </ul>
+
+    <!-- Tela de Feedbacks -->
+    <section class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Título da Página -->
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Feedbacks dos Usuários</h2>
+
+            <!-- Seção de Enviar Feedback -->
+            <div id="feedbackForm" class="mt-12 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Deixe seu Feedback</h3>
+                
+                <!-- Seção de Estrelas -->
+                <div class="flex items-center mb-4">
+                    <span class="text-gray-600 mr-2">Avaliação:</span>
+                    <div id="starRating" class="flex space-x-1">
+                        <i class="bx bx-star cursor-pointer text-gray-400" data-index="0"></i>
+                        <i class="bx bx-star cursor-pointer text-gray-400" data-index="1"></i>
+                        <i class="bx bx-star cursor-pointer text-gray-400" data-index="2"></i>
+                        <i class="bx bx-star cursor-pointer text-gray-400" data-index="3"></i>
+                        <i class="bx bx-star cursor-pointer text-gray-400" data-index="4"></i>
+                    </div>
+                </div>
+                
+                <!-- Campo para Escrever o Feedback -->
+                <textarea id="feedbackText" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Escreva seu feedback aqui..."></textarea>
+                
+                <!-- Botão para Enviar o Feedback -->
+                <div class="flex justify-end mt-4">
+                    <button id="submitFeedback" class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 disabled:bg-gray-300" disabled>Enviar Feedback</button>
+                </div>
+            </div>
+
+            <div class="mt-12 space-y-4">
+
+                            <!-- Feedbacks Enviados -->
+            <div id="feedbacksContainer" class="mt-12 space-y-6">
+                <!-- Os feedbacks serão exibidos aqui -->
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Horrível! Não recomendo."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Fernanda Souza</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Ótimo suporte, resolveram meu problema rápido."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- João Vitor</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Ambiente agradável e equipe atenciosa."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Gabriela Almeida</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Preço acessível, mas o serviço foi mediano."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Ricardo Oliveira</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Adorei! Com certeza voltarei."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Larissa Santos</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Não entregaram o que prometeram."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Lucas Pereira</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Não fiquei satisfeito com a experiência."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Carlos Eduardo</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Serviço bom, mas atrasaram a entrega."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Mariana Silva</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Gostei muito, mas poderia melhorar alguns detalhes."</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Pedro Henrique</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <p class="text-gray-600">"Excelente atendimento, tudo perfeito!"</p>
+                <div class="flex items-center mt-3">
+                    <span class="text-sm text-gray-400">- Ana Clara</span>
+                    <div class="ml-3 text-yellow-400">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                </div>
+            </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <p class="text-gray-600">"Adorei o site! Muito fácil de navegar e com informações claras. Recomendo a todos!"</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-sm text-gray-400">- João Silva</span>
+                        <div class="ml-3 text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <p class="text-gray-600">"A experiência de compra foi excelente! Comprei tudo rapidamente e sem problemas. Super satisfeito!"</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-sm text-gray-400">- Maria Oliveira</span>
+                        <div class="ml-3 text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star-half'></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <p class="text-gray-600">"Muito bom! Mas poderia melhorar a parte do suporte ao cliente, pois demorei para ser atendido."</p>
+                    <div class="flex items-center mt-3">
+                        <span class="text-sm text-gray-400">- Carlos Mendes</span>
+                        <div class="ml-3 text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star-half'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="../scripts/feedbacks.js"></script>
+</body>
+
+</html>

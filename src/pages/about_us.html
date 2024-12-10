@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../styles/about_us.css">
+    <title>Sobre Nós</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md fixed top-0 left-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <div class="flex items-center">
+                <a href="./landing_page.html" class="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+                    <!-- Logo escrita para desktop -->
+                    <span class="hidden md:block">FoodHub</span>
+                    <!-- Logo para mobile -->
+                    <img src="../images/logo.png" alt="Logo FoodHub" class="block md:hidden h-8">
+                </a>
+            </div>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="./logged_page.html" class="text-gray-700 font-medium hover:text-blue-500">Menu</a></li>
+                <li><a href="./feedbacks.html" class="text-gray-700 font-medium hover:text-blue-500">Feedbacks</a></li>
+                <li><a href="./about_us.html" class="text-gray-700 font-medium hover:text-blue-500">Sobre</a></li>
+            </ul>
+            <div class="hidden md:flex items-center">
+                <a id="profileLink" href="user_profile.html" class="text-gray-700 hover:text-blue-500 transition"><i class='bx bx-user-circle text-4xl'></i></a>
+            </div>
+            <div id="burger" class="flex flex-col items-center space-y-1 w-8 h-8 justify-center cursor-pointer md:hidden">
+                <div class="w-6 h-0.5 bg-gray-800"></div>
+                <div class="w-6 h-0.5 bg-gray-800"></div>
+                <div class="w-6 h-0.5 bg-gray-800"></div>
+            </div>
+        </nav>
+    </header>
+    <ul id="mobileNav" class="hidden fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-xl">
+        <li><a href="./logged_page.html" class="hover:text-blue-400 transition">Menu</a></li>
+        <li><a href="./feedbacks.html" class="hover:text-blue-400 transition">Feedbacks</a></li>
+        <li><a href="./about_us.html" class="hover:text-blue-400 transition">Sobre</a></li>
+        <li id="mobileProfileLink" style="display:none;"><a href="user_profile.html" class="hover:text-blue-400 transition">Editar Perfil</a></li>
+        <li id="mobileLoginLink"><a href="login.html" class="hover:text-blue-400 transition">Login</a></li>
+    </ul>
+    
+    <!-- Conteúdo Principal -->
+    <main class="mainContent mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Título Principal -->
+            <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">Sobre Nós</h1>
+            <p class="text-gray-600 mb-8 text-center text-lg">Conheça a história da FoodHub e como transformamos a maneira de encontrar e pedir comida.</p>
+            
+            <!-- Seção de Introdução -->
+            <section class="mb-12">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+                        <h2 class="text-2xl font-semibold text-blue-600 mb-4">Nossa Missão</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            A FoodHub nasceu para conectar pessoas e alimentos de maneira prática, rápida e eficiente.
+                            Trabalhamos para criar uma experiência gastronômica única, que vai além do simples pedido de comida.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img class="rounded-lg shadow-md" src="../images/about_us_image.jpg" alt="Imagem de equipe trabalhando">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Valores e Objetivos -->
+            <section class="bg-gray-100 py-8 px-6 rounded-lg mb-12">
+                <h2 class="text-2xl font-semibold text-blue-600 text-center mb-4">Nossos Valores</h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="w-full md:w-1/3 text-center">
+                        <i class='bx bxs-heart text-5xl text-red-500 mb-4'></i>
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">Paixão</h3>
+                        <p class="text-gray-600">Amamos o que fazemos e queremos transmitir isso em cada detalhe.</p>
+                    </div>
+                    <div class="w-full md:w-1/3 text-center">
+                        <i class='bx bxs-user-check text-5xl text-green-500 mb-4'></i>
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">Confiabilidade</h3>
+                        <p class="text-gray-600">Garantimos segurança e qualidade em cada pedido.</p>
+                    </div>
+                    <div class="w-full md:w-1/3 text-center">
+                        <i class='bx bx-planet text-5xl text-blue-500 mb-4'></i>
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">Sustentabilidade</h3>
+                        <p class="text-gray-600">Comprometidos com práticas que respeitam o meio ambiente.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mapa -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold text-blue-600 text-center mb-4">Onde Estamos</h2>
+                <p class="text-gray-600 text-center mb-6">Confira nossa localização: Shopping Park Sul, Rod. Tancredo Neves (Vrd- Um ), 160 - São Geraldo.</p>
+                <div id="map" class="w-full h-80 border border-gray-300 rounded-lg"></div>
+            </section>
+
+            <!-- Mensagem Final -->
+            <section class="text-center">
+                <h2 class="text-3xl font-bold text-blue-600 mb-4">Junte-se a Nós!</h2>
+                <p class="text-gray-600 text-lg mb-6">
+                    Faça parte da nossa jornada para criar um futuro onde comida de qualidade está ao alcance de todos.
+                </p>
+                <a href="#" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Saiba Mais</a>
+            </section>
+        </div>
+    </main>
+    <script src="../scripts/about_us.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1PGf0A2SIaF10OAEUzWAnC5-CDwFtJac&callback=initMap"></script>
+</body>
+</html>
